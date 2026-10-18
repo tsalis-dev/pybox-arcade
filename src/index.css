@@ -1,0 +1,142 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    background-color: #F8FAFC;
+    color: #1E293B;
+    overflow-x: hidden;
+    user-select: none;
+  }
+
+  code, pre, .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+/* ==========================================================================
+   ANIMASI GAME & MASCOT KEYFRAMES
+   ========================================================================== */
+
+/* Heart Pulse & Damage */
+@keyframes heartPulse {
+  0%, 100% { transform: scale(1); }
+  14% { transform: scale(1.22); }
+  28% { transform: scale(1); }
+  42% { transform: scale(1.15); }
+  70% { transform: scale(1); }
+}
+
+@keyframes heartShake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-6px) rotate(-8deg); }
+  40%, 80% { transform: translateX(6px) rotate(8deg); }
+}
+
+.animate-heart-pulse {
+  animation: heartPulse 1.8s ease-in-out infinite;
+}
+
+.animate-heart-damage {
+  animation: heartShake 0.5s ease-in-out;
+  filter: drop-shadow(0 0 12px rgba(239, 68, 68, 0.8));
+}
+
+/* Flame Flicker */
+@keyframes flameFlicker {
+  0%, 100% {
+    transform: scale(1) rotate(-1deg);
+    filter: drop-shadow(0 0 6px rgba(249, 115, 22, 0.7)) drop-shadow(0 0 14px rgba(234, 88, 12, 0.4));
+  }
+  25% {
+    transform: scale(1.08, 0.95) rotate(2deg);
+    filter: drop-shadow(0 0 10px rgba(251, 146, 60, 0.9)) drop-shadow(0 0 18px rgba(249, 115, 22, 0.6));
+  }
+  50% {
+    transform: scale(0.96, 1.05) rotate(-2deg);
+    filter: drop-shadow(0 0 6px rgba(249, 115, 22, 0.6)) drop-shadow(0 0 12px rgba(234, 88, 12, 0.3));
+  }
+  75% {
+    transform: scale(1.05, 1) rotate(1deg);
+    filter: drop-shadow(0 0 12px rgba(251, 191, 36, 0.9)) drop-shadow(0 0 18px rgba(249, 115, 22, 0.5));
+  }
+}
+
+.animate-flame {
+  animation: flameFlicker 1.2s ease-in-out infinite alternate;
+  transform-origin: center bottom;
+}
+
+/* Error Shake */
+@keyframes errorShake {
+  0%, 100% { transform: translateX(0); }
+  15%, 45%, 75% { transform: translateX(-8px); }
+  30%, 60%, 90% { transform: translateX(8px); }
+}
+
+.animate-error-shake {
+  animation: errorShake 0.45s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+
+/* Pyto Mascot Keyframes */
+@keyframes pytoBreathe {
+  0%, 100% { transform: scale(1, 1); }
+  50% { transform: scale(1.02, 0.98); }
+}
+
+@keyframes pytoBlink {
+  0%, 90%, 100% { transform: scaleY(1); }
+  95% { transform: scaleY(0.1); }
+}
+
+@keyframes pytoTongue {
+  0%, 75%, 100% { transform: scale(0); opacity: 0; }
+  85% { transform: scale(1); opacity: 1; }
+  92% { transform: scale(1.2) rotate(6deg); opacity: 1; }
+}
+
+@keyframes pytoJump {
+  0%, 100% { transform: translateY(0) scale(1); }
+  40% { transform: translateY(-16px) scale(1.06, 0.94); }
+  60% { transform: translateY(-10px) scale(0.97, 1.03); }
+}
+
+@keyframes pytoTilt {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(-8deg); }
+}
+
+.animate-pyto-breathe { animation: pytoBreathe 3.5s ease-in-out infinite; }
+.animate-pyto-blink   { animation: pytoBlink 4.2s infinite; }
+.animate-pyto-tongue  { animation: pytoTongue 3s ease-in-out infinite; }
+.animate-pyto-jump    { animation: pytoJump 0.6s ease-in-out infinite alternate; }
+.animate-pyto-tilt    { animation: pytoTilt 1.2s ease-in-out infinite; }
+
+/* Memory Slot Glow */
+@keyframes memoryPulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.3);
+    border-color: #3b82f6;
+  }
+  50% {
+    box-shadow: 0 0 20px 4px rgba(59, 130, 246, 0.55);
+    border-color: #60a5fa;
+  }
+}
+
+.memory-slot-active {
+  animation: memoryPulse 2s ease-in-out infinite;
+}
+
+/* Glass & Glow utilities */
+.glow-gold {
+  box-shadow: 0 4px 18px rgba(245, 158, 11, 0.25);
+}
+
+.glow-emerald {
+  box-shadow: 0 4px 18px rgba(16, 185, 129, 0.25);
+}
+
+.glow-blue {
+  box-shadow: 0 4px 18px rgba(59, 130, 246, 0.25);
+}
